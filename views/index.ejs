@@ -5,6 +5,12 @@
     <title>Document</title>
 </head>
 <body>
-    <%- include('partials/navbar') %> 
+    <%- include('partials/navbar') %>
+
+    <% const items = data.items %>
+    <% for (const i in items) { %> 
+        <h2><%= items[i] %></h2>
+    <% } %>
+
 </body>
 </html>
