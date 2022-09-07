@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "nodemon server.js -e js,ejs,css ",
     "start": "node server.js",
-    "css": "npx tailwindcss -i ./input/input.css -o ./public/output.css"
+    "css": "npx tailwindcss -i ./input/input.css -o ./public/output.css",
+    "build": "docker build . -t xjarlie/dwlc",
+    "push": "docker push xjarlie/dwlc"
   },
   "author": "",
   "license": "ISC",
