@@ -6,7 +6,7 @@ const indexRouter = require('./routes/index');
 const templateRouter = require('./routes/template');
 
 const app = express();
-const port = 5000;
+const port = 6000;
 
 app.set('view engine', 'ejs');
 
