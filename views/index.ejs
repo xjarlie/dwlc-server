@@ -5,8 +5,12 @@
     <title>Document</title>
 </head>
 <body>
+
+
     <%- include('partials/navbar') %>
 
+    <%- include ('partials/searchbar') %>
+    
     <% const items = data.items %>
     <% for (const i in items) { %> 
         <h2 class=" bg-red-400"><%= items[i] %></h2>
