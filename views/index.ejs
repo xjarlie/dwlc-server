@@ -11,6 +11,8 @@
 
     <%- include ('partials/searchbar') %>
     
+    <%- include ('partials/card') %>
+
     <% const motifs = data.motifs %>
     <% for(const i in motifs) { %>
         <h2 class="bg-tardis text-white"><%= motifs[i].name %> - <%= motifs[i].mainAppearance[0].appears %> </h2>
