@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <%- include('partials/head') %> 
-    <title>Document</title>
+    <title>Home - Doctor Who Leitmotif Catalogue</title>
 </head>
 <body>
 
@@ -11,10 +11,10 @@
 
     <%- include ('partials/searchbar') %>
     
-    <% const items = data.items %>
-    <% for (const i in items) { %> 
-        <h2 class=" bg-red-400"><%= items[i] %></h2>
-    <% } %>
+    <% const motifs = data.motifs %>
+    <% for(const i in motifs) { %>
+        <h2 class="bg-tardis text-white"><%= motifs[i].name %> - <%= motifs[i].mainAppearance[0].appears %> </h2>
+    <% } %> 
 
 </body>
 </html>

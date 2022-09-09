@@ -3,16 +3,38 @@ const apiUrl = require('../apiUrl');
 const router = express.Router();
 const fetch = require('node-fetch');
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
 
-    const data = { items: [
-        'item numero uno',
-        'item numero dos',
-        'look its a third item',
-        ':O a fourth'
-    ] };
+    const query = `
+        {
+            motifs(orderBy: {id: desc}) {
+                id
+                name
+                represents
+                mainAppearance: appearances(where: {main: {equals: true}}) {
+                    name
+                    appears
+                }
+                tags {
+                    name
+                }
+            }
+        }
+    `;
 
-    res.status(200).render('index', { data: data });
+    const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ query })
+    });
+
+    const status = response.status;
+    const data = (await response.json()).data;
+
+
+    res.status(200).render('index', { data });
 });
 
 router.get('/motif/:motifID', async (req, res) => {
@@ -49,7 +71,7 @@ router.get('/motif/:motifID', async (req, res) => {
     const status = response.status;
     const motif = (await response.json()).data.motif;
 
-    res.status(200).render('motif.ejs', { motif: motif });
+   res.status(200).render('motif.ejs', { motif: motif });
 });
 
 router.get('/track/:trackID', (req, res) => {
