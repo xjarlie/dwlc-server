@@ -71,11 +71,41 @@ router.get('/motif/:motifID', async (req, res) => {
     const status = response.status;
     const motif = (await response.json()).data.motif;
 
-   res.status(200).render('motif.ejs', { motif: motif });
+    res.status(200).render('motif', { motif: motif });
 });
 
-router.get('/track/:trackID', (req, res) => {
-    let track = {};
+router.get('/track/:trackID', async (req, res) => {
+
+    const { trackID } = req.params;
+    const query = `
+    {
+        track(where: {id: "${trackID}"}) {
+            id
+            name
+            url
+            appears
+            notes
+            motifs {
+                id
+                name
+                represents
+                notes
+                tags {
+                  name
+                }
+            }
+        }
+    }`
+
+    const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ query })
+    });
+    const status = response.status;
+    const track = (await response.json()).data.track;
 
     res.status(200).render('track', { track: track });
 });
