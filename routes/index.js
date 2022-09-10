@@ -14,6 +14,7 @@ router.get('/', async (req, res) => {
                 mainAppearance: appearances(where: {main: {equals: true}}) {
                     name
                     appears
+                    url
                 }
                 tags {
                     name
