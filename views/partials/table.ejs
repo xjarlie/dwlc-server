@@ -1,0 +1,45 @@
+
+
+<table id="table" class=" m-auto mt-5  border-transparent rounded-[10px] border-collapse overflow-hidden border-spacing-5 shadow-xl shadow-tardis">
+    <thead>
+        <tr>
+            <th id="name" class=" bg-slate-500">
+                name
+            </th>
+    
+            <th id="seasons" class="bg-slate-500">
+                seasons
+            </th>
+    
+            <th id="something" class="bg-slate-500">
+                something
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <% const motifs = data.motifs %>
+        <% for (const i in motifs) { %>
+            <tr class="p-5">
+                <td class="bg-slate-600 pl-5">
+                    <%= motifs[i].name %>
+                </td>
+
+                <td class="bg-slate-600 ">
+                    <%= motifs[i].mainAppearance[0].appears %>
+                </td>
+
+                <td class="bg-slate-600 pr-5">
+                    <%= motifs[i].represents %>
+                </td>
+
+            
+            </tr>
+
+       <% } %>
+
+    </tbody>
+        
+    
+
+    
+</table>
