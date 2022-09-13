@@ -1,38 +1,54 @@
 
 
-<table id="table" class="table-sort table-arrows m-auto mt-5  border-transparent rounded-[10px] border-collapse overflow-hidden border-spacing-5 shadow-xl shadow-tardis">
-    <thead>
+<table id="table" class="table-sort table-arrows m-auto my-5  border-transparent rounded-[10px] border-collapse overflow-hidden border-spacing-5 shadow-xl shadow-tardis w-6/12 ">
+    <thead class=" text-slate-300">
         <tr>
             <th id="name" class=" bg-slate-500">
-                name
+                Name
             </th>
     
             <th id="seasons" class="bg-slate-500">
-                seasons
+                Appearances
             </th>
     
             <th id="something" class="bg-slate-500">
-                something
+                Represents
             </th>
+
+            <th class="bg-slate-500">
+                Tags
+            </th>
+
+            <td class="bg-slate-500">
+
+            </td>
         </tr>
     </thead>
-    <tbody>
+    <tbody class=" text-gray-300">
         <% const motifs = data.motifs %>
         <% for (const i in motifs) { %>
-            <tr class="p-5">
-                <td class="bg-slate-600 pl-5">
+            <tr class="p-5 cursor-default">
+                <td class="bg-slate-600 px-5">
                     <%= motifs[i].name %>
                 </td>
 
-                <td class="bg-slate-600 ">
+                <td class="bg-slate-600 px-5">
                     <%= motifs[i].mainAppearance[0].appears %>
                 </td>
 
-                <td class="bg-slate-600 pr-5">
-                    <%= motifs[i].represents %> &#10132;
+                <td class="bg-slate-600 px-5">
+                    <%= motifs[i].represents %> 
                     
                 </td>
 
+                <td class="bg-slate-600 px-5">
+
+                    <%= motifs[i].tags[0].name %>
+                </td>
+
+                <td class="bg-slate-600 px-2">
+                    <a href="#"> &#10132;</a>
+                </td>
             
             </tr>
             
