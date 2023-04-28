@@ -38,7 +38,41 @@ router.get('/', async (req, res) => {
     res.status(200).render('index', { data });
 });
 
-router.get('/motif/:motifID', async (req, res) => {
+router.get('/motifs', async (req, res) => {
+    const query = `
+    {
+        motifs (orderBy: {name: asc}) {
+            id
+            name
+            represents
+            mainAppearance: appearances(where: {main: {equals: true}}) {
+                name
+                appears
+                url
+            }
+            tags {
+                name
+            }
+        }
+    }
+    `;
+
+    const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ query })
+    });
+
+    const status = response.status;
+    const data = (await response.json()).data;
+    console.log(status, data);
+
+    res.status(200).render('motifs', { motifs: data.motifs });
+})
+
+router.get('/motifs/:motifID', async (req, res) => {
     const { motifID } = req.params;
     const query = `
         {
@@ -50,17 +84,20 @@ router.get('/motif/:motifID', async (req, res) => {
                 tags {
                     name
                 }
-                appearances {
+                mainAppearance: appearances(where: {main: {equals: true}}) {
+                    name
+                    spotifyUrl
+                    url
+                }
+                appearances (orderBy: {appears: asc}) {
                     id
                     name
-                    url
                     appears
-                    notes
                     main
                 }
             }
         }
-    `
+    `;
 
     const response = await fetch(apiUrl, {
         method: 'POST',
@@ -75,7 +112,7 @@ router.get('/motif/:motifID', async (req, res) => {
     res.status(200).render('motif', { motif: motif });
 });
 
-router.get('/track/:trackID', async (req, res) => {
+router.get('/tracks/:trackID', async (req, res) => {
 
     const { trackID } = req.params;
     const query = `

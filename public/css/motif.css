@@ -1,0 +1,181 @@
+body {
+    background-color: var(--tardis-blue);
+    color: white;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 70%;
+    height: 70%;
+    max-width: 1000px;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.nav {
+    font-weight: 700;
+    color: rgba(255, 255, 255, 50%);
+    display: block;
+}
+
+.nav:hover {
+    text-decoration: underline;
+}
+
+.nav a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.title {
+    font-weight: 500;
+    font-size: 28px;
+    padding: 0.9rem 0;
+}
+
+.tags {
+    padding: 0 0 1.3rem 0;
+}
+
+.tag {
+    background-color: rgba(255, 255, 255, 20%);
+    padding: 3px 10px;
+    border-radius: 10px;
+    font-style: italic;
+}
+
+.panel {
+    background-color: rgba(255, 255, 255, 12%);
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    border-radius: 16px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.subpanel {
+    margin: 0.5rem;
+}
+
+.left {
+    min-width: 270px;
+    width: 40%;
+    flex-grow: 1;
+}
+
+.right {
+    width: 40%;
+    max-width: 550px;
+}
+
+.pane {
+    background-color: rgba(255, 255, 255, 20%);
+    border-radius: 10px;
+    margin: 0.5rem;
+}
+
+.listen {
+    display: flex;
+    flex-direction: column;
+}
+
+.details {
+    padding: 0.7rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.appearances {
+    margin-top: 1.5rem;
+    padding: 0.7rem 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.appearances .paneTitle {
+    margin: 0 0 5px 0.7rem;
+}
+
+.appearances .list .item {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 0.75rem 10px;
+    color: inherit;
+    text-decoration: none;
+}
+.appearances .list .item:nth-child(even) {
+    background-color: rgba(255, 255, 255, 12%);
+}
+.appearances .list .item:hover {
+    background-color: rgba(255, 255, 255, 20%);
+}
+
+.item .appname {
+    flex-grow: 1;
+}
+
+.item .episode {
+    margin: 0 20px;
+}
+
+.paneTitle {
+    font-weight: 800;
+    font-style: italic;
+    font-size: 14px;
+    display: block;
+}
+
+.details .paneTitle {
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+
+.listen .paneTitle {
+    margin: 0.5rem;
+}
+
+
+.embed iframe {
+    aspect-ratio: 1.5 / 1;
+    width: 100%;
+    height: auto;
+}
+
+.caption {
+    font-style: italic;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0.3rem;
+}
+
+.spotify {
+    
+}
+
+.spotify:hover {
+    text-decoration: underline;
+}
+
+.spotify a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    font-weight: 500;
+}
+
+.spotify svg {
+    width: 24px;
+    margin: 10px;
+}

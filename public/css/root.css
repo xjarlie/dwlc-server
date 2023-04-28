@@ -1,0 +1,9 @@
+:root {
+    --tardis-blue: #003B6F;
+    --dark-tardis: #00203C;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+*, *::after, *::before {
+    box-sizing: border-box;
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("partials/head") %>
+    <title>Motifs - Doctor Who Leitmotif Catalogue</title>
+    <link rel="stylesheet" href="/public/css/motifs.css" />
+</head>
+<body>
+
+    <div class="table-wrap">
+        <span class="table-header">Motifs</span>
+        <table class="table-sort table-arrows">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Represents</th>
+                    <th>Appeared</th>
+                    <th>Tags</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% const motifs = locals.motifs %>
+                <% for (const i in motifs) { %>
+                    
+                        <tr>
+                            <td><a href="/motifs/<%= motifs[i].id %>"><%= motifs[i].name %></td></a>
+                            <td><a href="/motifs/<%= motifs[i].id %>" tabindex="-1"><%= motifs[i].represents %></td></a>
+                            <td><a href="/motifs/<%= motifs[i].id %>" tabindex="-1"><%= motifs[i].mainAppearance[0].appears %></td></a>
+                            <td><a href="/motifs/<%= motifs[i].id %>" tabindex="-1"><% for (const j in motifs[i].tags) { %> <%= motifs[i].tags[j].name %>, <% } %></a></td>
+                        </tr>
+                    </a>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

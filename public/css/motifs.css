@@ -1,0 +1,48 @@
+body {
+    background-color: var(--tardis-blue);
+    color: white;
+}
+
+.table-wrap {
+    background-color: rgba(255, 255, 255, 12%);
+    border-radius: 16px;
+    width: fit-content;
+    
+    margin: auto;
+}
+
+.table-header {
+    font-weight: 800;
+    display: block;
+    padding: 0.75rem;
+    color: rgba(255, 255, 255, 75%);
+    font-style: italic;
+}
+
+.table-sort {
+    border-spacing: 0;
+}
+
+thead th {
+    padding: 0.5rem;
+}
+
+tbody td a {
+    display:block;
+    text-decoration: none;
+    color: white;
+    padding: 1rem;
+}
+
+tbody tr {
+    transition: all 0.1s ease;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: rgba(255, 255, 255, 12%);
+}
+
+tbody tr:hover {
+    background-color: rgba(255, 255, 255, 20%);
+    cursor: pointer;
+}
