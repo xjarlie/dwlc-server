@@ -6,32 +6,43 @@
     <link rel="stylesheet" href="/public/css/motifs.css" />
 </head>
 <body>
+    <div class="container">
+        <div class="header">
+            <span class="nav"><a href="/">< Home</a></span>
+            <span class="title">
+                All Motifs
+                <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M43 54.5C43 58.366 38.9706 61.5 34 61.5C29.0294 61.5 25 58.366 25 54.5C25 50.634 29.0294 47.5 34 47.5C38.9706 47.5 43 50.634 43 54.5Z" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M43 54.5L43 18.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M43 18.5L49.4065 27.9881C52.973 33.2702 52.4044 40.3183 48.0373 44.9603L48 45" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
 
-    <div class="table-wrap">
-        <span class="table-header">Motifs</span>
-        <table class="table-sort table-arrows">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Represents</th>
-                    <th>Appeared</th>
-                    <th>Tags</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% const motifs = locals.motifs %>
-                <% for (const i in motifs) { %>
-                    
-                        <tr>
-                            <td><a href="/motifs/<%= motifs[i].id %>"><%= motifs[i].name %></td></a>
-                            <td><a href="/motifs/<%= motifs[i].id %>" tabindex="-1"><%= motifs[i].represents %></td></a>
-                            <td><a href="/motifs/<%= motifs[i].id %>" tabindex="-1"><%= motifs[i].mainAppearance[0].appears %></td></a>
-                            <td><a href="/motifs/<%= motifs[i].id %>" tabindex="-1"><% for (const j in motifs[i].tags) { %> <%= motifs[i].tags[j].name %>, <% } %></a></td>
-                        </tr>
-                    </a>
-                <% } %>
-            </tbody>
-        </table>
+            </span>
+        </div>
+        <div class="table-wrap simple-scrollbar">
+            <table class="table-sort table-arrows">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th class="represents">Represents</th>
+                        <th class="appears">Appeared</th>
+                        <th class="tags">Tags</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% const motifs = locals.motifs %>
+                    <% for (const i in motifs) { %>
+                            <tr>
+                                <td><a href="/motifs/<%= motifs[i].id %>"><%= motifs[i].name %></td></a>
+                                <td class="represents"><a href="/motifs/<%= motifs[i].id %>" tabindex="-1"><%= motifs[i].represents %></a></td>
+                                <td class="appears"><a href="/motifs/<%= motifs[i].id %>" tabindex="-1"><%= motifs[i].mainAppearance[0].appears %></a></td>
+                                <td class="tags"><a href="/motifs/<%= motifs[i].id %>" tabindex="-1"><% for (const j in motifs[i].tags) { %> <%= motifs[i].tags[j].name %>, <% } %></a></td>
+                            </tr>
+                        </a>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
     </div>
 
 </body>

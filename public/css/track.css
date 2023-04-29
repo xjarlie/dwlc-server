@@ -1,5 +1,5 @@
 body {
-    background-color: var(--tardis-blue);
+    background-color: var(--dark-tardis);
     color: white;
     height: 100%;
     display: flex;
@@ -47,8 +47,7 @@ body {
 .title svg {
     width: 36px;
     stroke-width: 5px;
-    color: inherit;
-    margin-right: 0.1rem;
+    margin-right: 0.5rem;
     stroke: white;
 }
 
@@ -105,18 +104,18 @@ body {
     flex-direction: column;
 }
 
-.appearances {
+.motifs {
     margin-top: 1.5rem;
     padding: 0.7rem 0;
     display: flex;
     flex-direction: column;
 }
 
-.appearances .paneTitle {
+.motifs .paneTitle {
     margin: 0 0 5px 0.7rem;
 }
 
-.appearances .list .item {
+.motifs .list .item {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -128,15 +127,15 @@ body {
 /* .appearances .list .item:nth-child(even) {
     background-color: rgba(255, 255, 255, -10%);
 } */
-.appearances .list .item:hover {
+.motifs .list .item:hover {
     background-color: rgba(255, 255, 255, 20%);
 }
 
-.item .appname {
+.item .motifname {
     flex-grow: 1;
 }
 
-.item .episode {
+.item .motifrep {
     margin: 0 20px;
 }
 

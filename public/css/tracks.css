@@ -1,5 +1,5 @@
 body {
-    background-color: var(--tardis-blue);
+    background-color: var(--dark-tardis);
     color: white;
     overflow: hidden;
     height: 100svh;
@@ -24,7 +24,7 @@ body {
 }
 
 @media screen and (max-width: 500px) {
-    td.tags, th.tags {
+    td.motifs, th.motifs {
         display: none;
     }
 }
@@ -68,6 +68,7 @@ body {
     width: 50px;
     stroke-width: 5px;
     stroke: white;
+    margin-left: 0.5rem;
 }
 
 .table-wrap {
@@ -97,6 +98,10 @@ tbody td a {
     padding: 1rem;
 }
 
+tbody td.yt a, tbody td.spotify a {
+    padding: 0.7rem;
+}
+
 tbody tr {
     transition: all 0.1s ease;
 }
@@ -108,4 +113,9 @@ tbody tr:nth-child(odd) {
 tbody tr:hover {
     background-color: rgba(255, 255, 255, 20%);
     cursor: pointer;
+}
+
+td svg {
+    width: 24px;
+
 }

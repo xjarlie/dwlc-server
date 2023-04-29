@@ -4,5 +4,145 @@ body {
 }
 
 a {
-    color: white;
+    color: inherit;
+    text-decoration: none;
+}
+
+a.always-underline {
+    text-decoration: underline;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0.5rem;
+}
+
+.header .title {
+    font-size: 32pt;
+    font-weight: 300;
+}
+
+.header .credit {
+    color: rgba(255, 255, 255, 60%);
+    font-weight: 500;
+    font-size: 16pt;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.pane {
+    background-color: rgba(255, 255, 255, 20%);
+    border-radius: 10px;
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.paneTitle {
+    font-weight: 800;
+    font-style: italic;
+    font-size: 14px;
+    display: block;
+    margin: 0.5rem;
+}
+
+.about {
+    width: 50%;
+}
+
+.about .text {
+    margin: 0.1rem 1rem 1rem 1rem;
+}
+
+.right {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem;
+}
+
+.links a {
+    display: block;
+    background-color: rgba(255, 255, 255, 12%);
+    border-radius: 14px;
+    padding: 1rem;
+    margin-bottom: 0.4rem;
+    text-align: center;
+    transition: all 0.1s ease;
+    font-weight: 700;
+}
+
+.links a:hover {
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 30%);
+}
+
+.recent {
+    /* flex-grow: 1; */
+}
+
+.recent .motif {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+    transition: all 0.1s ease;
+    font-style: italic;
+}
+
+.recent .motif:nth-child(even) {
+    background-color: rgba(255, 255, 255, 12%);
+}
+
+.recent .motif:hover {
+    background-color: rgba(255, 255, 255, 20%);
+    text-decoration: none;
+}
+
+.recent .motif:last-child {
+    border-radius: 0 0 10px 10px;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .content {
+        flex-wrap: wrap-reverse;
+    }
+    .about, .right {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .container {
+        
+        width: 100%;
+    }
 }

@@ -1,12 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <%- include("partials/head") %>
-    <title>Home - Doctor Who Leitmotif Catalogue</title>
-    <link rel="stylesheet" href="/public/css/index.css" />
+        <title>Home - Doctor Who Leitmotif Catalogue</title>
+        <link rel="stylesheet" href="/public/css/index.css" />
 </head>
+
 <body>
-    <a href="/motifs">Motifs</a>
-    <a href="/tracks">Tracks</a>
+    
+    <div class="container">
+        <div class="header">
+            <span class="title">The Doctor Who Leitmotif Catalogue</span>
+            <span class="credit">by <a target="_blank" href="https://www.github.com/xjarlie">Xjarlie</a></span>
+        </div>
+        <div class="content">
+            <div class="about pane">
+                <span class="paneTitle">About</span>
+                <span class="text">
+                    Hi! I’m Xjarlie, and this is the (very unofficial) Doctor Who Leitmotif Catalogue - a collection of
+                    motifs and themes from the 2005 reboot of Doctor Who, largely composed by Murray Gold, with my brief thoughts
+                    on their representation and meaning.
+                    <br /><br />
+                    If you have thoughts or ideas about any of the themes I’ve included, or if there is anything important
+                    that I missed, don’t hesitate to get in contact:
+                    <br /><br />
+                    <b>Email:</b> <a href="mailto:dwlc@xjarlie.com">dwlc@xjarlie.com</a>
+                    <br />
+                    <b>Discord:</b> xjarlie#8767
+                    <br /><br />
+                    Or, post an issue on <a class="always-underline" target="_blank" href="https://www.github.com/xjarlie/dwlc-server/issues">Github</a>.
+                </span>
+            </div>
+            <div class="right">
+                <div class="links">
+                    <a href="/motifs" class="motifs">View all motifs</a>
+                    <a href="/tracks" class="tracks">View all tracks</a>
+                </div>
+                <div class="recent pane">
+                    <span class="paneTitle">Recent</span>
+                    <% for (let i=0; i < 3; i++) { %>
+                        <% if (data.motifs[i]) { %>
+                            <a class="motif" href="/motifs/<%= data.motifs[i].id %>">
+                                <span class="name">
+                                    <%= data.motifs[i].name %>
+                                </span>
+                                <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M14.2014 8.50824L8.72036 8.50907M8.71248 8.50907L2.76248 8.50907" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M8.71246 2.55L13.8736 7.71114C14.3093 8.1468 14.3093 8.8532 13.8736 9.28886L8.71246 14.45" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </a>
+                        <% } %>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>

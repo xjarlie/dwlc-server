@@ -10,15 +10,6 @@ router.get('/', async (req, res) => {
             motifs(orderBy: {id: desc}) {
                 id
                 name
-                represents
-                mainAppearance: appearances(where: {main: {equals: true}}) {
-                    name
-                    appears
-                    url
-                }
-                tags {
-                    name
-                }
             }
         }
     `;
@@ -112,6 +103,34 @@ router.get('/motifs/:motifID', async (req, res) => {
     res.status(200).render('motif', { motif: motif });
 });
 
+router.get('/tracks', async (req, res) => {
+    const query = `
+    {
+        tracks (orderBy: {name: asc}) {
+            id
+            name
+            appears
+            motifs {
+                name
+            }
+            url
+            spotifyUrl
+        }
+    }
+    `;
+
+    const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ query })
+    });
+    const status = response.status;
+    const tracks = (await response.json()).data.tracks;
+    res.status(200).render('tracks', { tracks: tracks });
+})
+
 router.get('/tracks/:trackID', async (req, res) => {
 
     const { trackID } = req.params;
@@ -121,16 +140,13 @@ router.get('/tracks/:trackID', async (req, res) => {
             id
             name
             url
+            spotifyUrl
             appears
             notes
             motifs {
                 id
                 name
                 represents
-                notes
-                tags {
-                  name
-                }
             }
         }
     }`
@@ -147,5 +163,41 @@ router.get('/tracks/:trackID', async (req, res) => {
 
     res.status(200).render('track', { track: track });
 });
+
+router.get('/tags/:tagName', async (req, res) => {
+    console.log('here')
+    const { tagName } = req.params;
+    const query = `
+    {
+        tags(where: {name: {equals:"${tagName}"}}) {
+            id
+            name
+            motifs(orderBy: {id: desc}) {
+                id
+                name
+                represents
+                mainAppearance: appearances(where: {main: {equals: true}}) {
+                    appears
+                }
+                tags {
+                    name
+                }
+            }
+        }
+    }
+    `;
+
+    const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ query })
+    });
+    const status = response.status;
+    const tag = (await response.json()).data.tags[0];
+
+    res.status(200).render('tag', { tag });
+})
 
 module.exports = router;
