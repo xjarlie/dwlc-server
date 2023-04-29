@@ -1,11 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include('partials/head') %> 
-    <title><%= track.name %> - Track</title>
+    <%- include("partials/head")  %>
+    <title><%= track.name %> - Doctor Who Leitmotif Catalogue</title>
+    <link rel="stylesheet" href="/public/css/track.css" />
 </head>
 <body>
-    <%- include('partials/navbar') %> 
-    
+    <div class="container">
+        <div class="header">
+            <span class="nav"><a href="/tracks"> < All tracks</a></span>
+            <span class="title">
+                <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M40 12L43.135 12.1761L46.2306 12.702L49.2478 13.5713L52.1487 14.7729L54.8969 16.2917L57.4577 18.1087L59.799 20.201L61.8913 22.5423L63.7083 25.1031L65.2271 27.8513L66.4287 30.7522L67.298 33.7694L67.8239 36.865L68 40L67.8239 43.135L67.298 46.2306L66.4287 49.2478L65.2271 52.1487L63.7083 54.8969L61.8913 57.4577L59.799 59.799L57.4577 61.8913L54.8969 63.7083L52.1487 65.2271L49.2478 66.4287L46.2306 67.298L43.135 67.8239L40 68L36.865 67.8239L33.7694 67.298L30.7522 66.4287L27.8513 65.2271L25.1031 63.7083L22.5423 61.8913L20.201 59.799L18.1087 57.4577L16.2917 54.8969L14.7729 52.1487L13.5713 49.2478L12.702 46.2306L12.1761 43.135L12 40L12.1761 36.865L12.702 33.7694L13.5713 30.7522L14.7729 27.8513L16.2917 25.1031L18.1087 22.5423L20.201 20.201L22.5423 18.1087L25.1031 16.2917L27.8513 14.7729L30.7522 13.5713L33.7694 12.702L36.865 12.1761L40 12Z" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M40 32L40.8957 32.0503L41.7802 32.2006L42.6422 32.4489L43.4711 32.7922L44.2563 33.2262L44.9879 33.7453L45.6569 34.3431L46.2547 35.0121L46.7738 35.7437L47.2078 36.5289L47.5511 37.3578L47.7994 38.2198L47.9497 39.1043L48 40L47.9497 40.8957L47.7994 41.7802L47.5511 42.6422L47.2078 43.4711L46.7738 44.2563L46.2547 44.9879L45.6569 45.6569L44.9879 46.2547L44.2563 46.7738L43.4711 47.2078L42.6422 47.5511L41.7802 47.7994L40.8957 47.9497L40 48L39.1043 47.9497L38.2198 47.7994L37.3578 47.5511L36.5289 47.2078L35.7437 46.7738L35.0121 46.2547L34.3431 45.6569L33.7453 44.9879L33.2262 44.2563L32.7922 43.4711L32.4489 42.6422L32.2006 41.7802L32.0503 40.8957L32 40L32.0503 39.1043L32.2006 38.2198L32.4489 37.3578L32.7922 36.5289L33.2262 35.7437L33.7453 35.0121L34.3431 34.3431L35.0121 33.7453L35.7437 33.2262L36.5289 32.7922L37.3578 32.4489L38.2198 32.2006L39.1043 32.0503L40 32Z" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                <%= track.name %>
+            </span>
+        </div>
+        <div class="panel">
+            <div class="left subpanel">
+                <div class="details pane">
+                    <span class="paneTitle">Details</span>
+                    <div class="content">
+                        <b>Appears:</b> <%= track.appears %>
+                        <br /><br />
+                        <b>Notes:</b><br />
+                        <%= track.notes %>
+                    </div>
+                </div>
+                <div class="motifs pane">
+                    <span class="paneTitle">Motifs</span>
+                    <div class="list">
+                        <% for (const o of track.motifs) { %>
+                            <a class="item" href="/motifs/<%= o.id %>">
+                                <span class="motifname"><%= o.name %></span>
+                                <span class="motifrep"><%= o.represents %></span>
+                                <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M14.2014 8.50824L8.72036 8.50907M8.71248 8.50907L2.76248 8.50907" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M8.71246 2.55L13.8736 7.71114C14.3093 8.1468 14.3093 8.8532 13.8736 9.28886L8.71246 14.45" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </a>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+            <div class="right subpanel">
+                <div class="listen pane">
+                    <span class="paneTitle">Listen</span>
+                    <div class="embed">
+                        <% const youtubeID = track.url.split("https://youtu.be/")[1]; %>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= youtubeID %>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <% if (track.spotifyUrl) { %>
+                        <span class="spotify"><a target="_blank" href="<%= track.spotifyUrl %>"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+                            <path fill="#1ed760" d="M248 8C111.1 8 0 119.1 0 256s111.1 248 248 248 248-111.1 248-248S384.9 8 248 8Z"/>
+                            <path d="M406.6 231.1c-5.2 0-8.4-1.3-12.9-3.9-71.2-42.5-198.5-52.7-280.9-29.7-3.6 1-8.1 2.6-12.9 2.6-13.2 0-23.3-10.3-23.3-23.6 0-13.6 8.4-21.3 17.4-23.9 35.2-10.3 74.6-15.2 117.5-15.2 73 0 149.5 15.2 205.4 47.8 7.8 4.5 12.9 10.7 12.9 22.6 0 13.6-11 23.3-23.2 23.3zm-31 76.2c-5.2 0-8.7-2.3-12.3-4.2-62.5-37-155.7-51.9-238.6-29.4-4.8 1.3-7.4 2.6-11.9 2.6-10.7 0-19.4-8.7-19.4-19.4s5.2-17.8 15.5-20.7c27.8-7.8 56.2-13.6 97.8-13.6 64.9 0 127.6 16.1 177 45.5 8.1 4.8 11.3 11 11.3 19.7-.1 10.8-8.5 19.5-19.4 19.5zm-26.9 65.6c-4.2 0-6.8-1.3-10.7-3.6-62.4-37.6-135-39.2-206.7-24.5-3.9 1-9 2.6-11.9 2.6-9.7 0-15.8-7.7-15.8-15.8 0-10.3 6.1-15.2 13.6-16.8 81.9-18.1 165.6-16.5 237 26.2 6.1 3.9 9.7 7.4 9.7 16.5s-7.1 15.4-15.2 15.4z"/>
+                          </svg>Listen on Spotify</a></span>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
