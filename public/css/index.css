@@ -1,6 +1,7 @@
 body {
     background-color: var(--tardis-blue);
     color: white;
+    overflow: hidden;
 }
 
 a {
@@ -35,7 +36,7 @@ a:hover {
 
 .container {
     width: 80%;
-    margin: auto;
+    margin: 5rem auto 0 auto;
     display: flex;
     flex-direction: column;
 }
