@@ -197,7 +197,13 @@ router.get('/tags/:tagName', async (req, res) => {
     const status = response.status;
     const tag = (await response.json()).data.tags[0];
 
+    if (!tag) {
+        res.redirect('/404');
+        return;
+    }
+
     res.status(200).render('tag', { tag });
+    return;
 })
 
 module.exports = router;

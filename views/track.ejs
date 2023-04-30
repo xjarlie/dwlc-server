@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include("partials/head")  %>
-    <title><%= track.name %> - Doctor Who Leitmotif Catalogue</title>
+    <%- include("partials/head", {title: track.name, description: track.notes})  %>
     <link rel="stylesheet" href="/public/css/track.css" />
 </head>
 <body>
