@@ -47,28 +47,15 @@ a:hover {
     flex-direction: row;
 }
 
-.pane {
-    background-color: rgba(255, 255, 255, 20%);
-    border-radius: 10px;
-    margin: 0.5rem;
-    display: flex;
-    flex-direction: column;
-}
 
-.paneTitle {
-    font-weight: 800;
-    font-style: italic;
-    font-size: 14px;
-    display: block;
-    margin: 0.5rem;
-}
 
 .about {
     width: 50%;
 }
 
 .about .text {
-    margin: 0.1rem 1rem 1rem 1rem;
+    margin: 0.7rem 0.7rem 0.7rem 0.7rem;
+    display: block;
 }
 
 .right {
