@@ -2,6 +2,15 @@ const express = require('express');
 const apiUrl = require('../apiUrl');
 const router = express.Router();
 const fetch = require('node-fetch');
+const episodes = require('./episodes.json');
+
+function getEpisode(id) {
+    const split = id.trim().toLowerCase().split('e');
+    const series = split[0].slice(1);
+    const episode = split[1];
+
+    return episodes[id.trim()];
+}
 
 router.get('/', async (req, res) => {
 
@@ -99,6 +108,9 @@ router.get('/motifs/:motifID', async (req, res) => {
     });
     const status = response.status;
     const motif = (await response.json()).data.motif;
+    for (const i in motif.appearances) {
+        motif.appearances[i].episodeTitle = getEpisode(motif.appearances[i].appears);
+    }
 
     res.status(200).render('motif', { motif: motif });
 });
@@ -160,6 +172,7 @@ router.get('/tracks/:trackID', async (req, res) => {
     });
     const status = response.status;
     const track = (await response.json()).data.track;
+    track.episodeTitle = getEpisode(track.appears);
 
     res.status(200).render('track', { track: track });
 });
