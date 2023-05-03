@@ -5,11 +5,7 @@ const fetch = require('node-fetch');
 const episodes = require('./episodes.json');
 
 function getEpisode(id) {
-    const split = id.trim().toLowerCase().split('e');
-    const series = split[0].slice(1);
-    const episode = split[1];
-
-    return episodes[id.trim()];
+    return episodes[id.trim().toUpperCase()];
 }
 
 router.get('/', async (req, res) => {
@@ -70,7 +66,7 @@ router.get('/motifs', async (req, res) => {
     console.log(status, data);
 
     res.status(200).render('motifs', { motifs: data.motifs });
-})
+});
 
 router.get('/motifs/:motifID', async (req, res) => {
     const { motifID } = req.params;
@@ -178,7 +174,6 @@ router.get('/tracks/:trackID', async (req, res) => {
 });
 
 router.get('/tags/:tagName', async (req, res) => {
-    console.log('here')
     const { tagName } = req.params;
     const query = `
     {
@@ -217,6 +212,44 @@ router.get('/tags/:tagName', async (req, res) => {
 
     res.status(200).render('tag', { tag });
     return;
-})
+});
+
+router.get('/episodes/:id', async (req, res) => {
+    const { id } = req.params;
+    const episodeTitle = getEpisode(id);
+    if (!episodeTitle) {
+        res.redirect('/404');
+        return;
+    }
+
+    const query = `
+    {
+        tracks(where: {appears: {equals: "${id.toUpperCase()}"}}, orderBy: {id: desc}) {
+            id
+            name
+            appears
+            motifs {
+                name
+            }
+            url
+            spotifyUrl
+        }
+    }
+    `;
+
+    const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ query })
+    });
+    const data = (await response.json()).data;
+    console.log(response.status, data);
+    data.episodeTitle = episodeTitle;
+
+    res.status(200).render('episode', {data});
+    return;
+});
 
 module.exports = router;
