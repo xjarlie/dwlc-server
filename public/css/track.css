@@ -97,6 +97,25 @@ body {
     margin: 0.7rem 0.7rem 0.7rem 0.7rem;
 }
 
+.details .episode {
+    background-color: rgba(255, 255, 255, 20%);
+    border-radius: 12px;
+    padding: 0.1rem 0.7rem;
+    font-weight: 400;
+    width: -moz-fit-content;
+    width: fit-content;
+    display: inline-block;
+    margin: 0.3rem 0;
+    transition: all 0.1s ease;
+    text-decoration: none;
+    color: inherit;
+}
+
+.details .episode:hover {
+    background-color: rgba(255, 255, 255, 30%);
+    cursor: pointer;
+}
+
 .motifs {
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
