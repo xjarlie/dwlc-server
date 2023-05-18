@@ -9,7 +9,7 @@
         <div class="header">
             <span class="nav"><a href="/">< Home</a></span>
             <span class="title">
-                Episode: <span class="tag"><%= data.episodeTitle %></span> (<%= data.tracks.length %>)
+                Episode: <span class="tag"><%= data.episodeID %> - <i><%= data.episodeTitle %></i></span> (<%= data.tracks.length %> track<%= data.tracks.length === 1 ? "" : "s" %>)
             </span>
         </div>
         <div class="table-wrap simple-scrollbar">

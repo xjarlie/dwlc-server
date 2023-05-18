@@ -247,6 +247,7 @@ router.get('/episodes/:id', async (req, res) => {
     const data = (await response.json()).data;
     console.log(response.status, data);
     data.episodeTitle = episodeTitle;
+    data.episodeID = id.toUpperCase();
 
     res.status(200).render('episode', {data});
     return;
