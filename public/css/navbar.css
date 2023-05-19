@@ -52,6 +52,8 @@
     transition: all 0.1s ease;
     
     margin-right: 14px;
+    width: 25%;
+    min-width: fit-content;
 }
 
 .navbar .searchWrap input {
@@ -60,6 +62,10 @@
 
     color: white;
     font-weight: 700;
+    font-size: 14px;
+
+    width: 100%;
+    min-width: min-content;
 
     padding: 10px 0 10px 12px;
 }
@@ -83,7 +89,7 @@
     justify-content: center;
     align-items: center;
 
-    background-color: rgba(255, 255, 255, 12%);
+    background-color: rgba(255, 255, 255, 5%);
     border: none;
 
     border-radius: 10px;
@@ -93,7 +99,7 @@
 
 .navbar .searchWrap button:hover {
     cursor: pointer;
-    background-color: rgba(255, 255, 255, 30%);
+    background-color: rgba(255, 255, 255, 10%);
 }
 
 .navbar .searchWrap button img {
