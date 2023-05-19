@@ -1,0 +1,101 @@
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: rgba(255, 255, 255, 5%);
+    border-radius: 14px;
+
+    margin: 10px;
+}
+
+.navbar .titleWrap {
+    margin: 9px 0 9px 14px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    color: rgba(255, 255, 255, 70%);
+
+    text-decoration: none;
+}
+
+.navbar .titleWrap .ntitle {
+    margin-left: 14px;
+
+    font-size: 20px;
+    font-weight: 700;
+
+    color: inherit;
+    transition: all 0.1s ease;
+}
+
+.navbar .titleWrap:hover {
+    text-decoration: none;
+}
+
+.navbar .titleWrap:hover {
+    color: rgba(255, 255, 255, 90%);
+}
+
+
+.navbar .searchWrap {
+    display: flex;
+    flex-direction: row;
+    
+    background-color: rgba(255, 255, 255, 12%);
+
+    border-radius: 10px;
+
+    transition: all 0.1s ease;
+    
+    margin-right: 14px;
+}
+
+.navbar .searchWrap input {
+    background-color: transparent;
+    border: none;
+
+    color: white;
+    font-weight: 700;
+
+    padding: 10px 0 10px 12px;
+}
+
+.navbar .searchWrap:hover {
+    background-color: rgba(255, 255, 255, 15%);
+}
+
+.navbar .searchWrap input:focus {
+    border: none;
+    outline: none;
+}
+
+.navbar .searchWrap input::placeholder {
+    color: rgba(255, 255, 255, 70%);
+}
+
+.navbar .searchWrap button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(255, 255, 255, 12%);
+    border: none;
+
+    border-radius: 10px;
+
+    transition: all 0.1s ease;
+}
+
+.navbar .searchWrap button:hover {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 30%);
+}
+
+.navbar .searchWrap button img {
+    margin: auto;
+}

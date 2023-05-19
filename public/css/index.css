@@ -1,7 +1,6 @@
 body {
     background-color: var(--tardis-blue);
     color: white;
-    overflow: hidden;
 }
 
 a {
@@ -15,6 +14,7 @@ a.always-underline {
 
 a:hover {
     text-decoration: underline;
+    cursor: pointer;
 }
 
 .header {
@@ -87,7 +87,7 @@ a:hover {
 }
 
 .recent {
-    /* flex-grow: 1; */
+    flex-grow: 1;
 }
 
 .recent .motif {

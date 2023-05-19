@@ -253,4 +253,8 @@ router.get('/episodes/:id', async (req, res) => {
     return;
 });
 
+router.get('/search', async (req, res) => {
+    res.json({w: req.query})
+})
+
 module.exports = router;
