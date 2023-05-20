@@ -36,7 +36,7 @@ a:hover {
 
 .container {
     width: 80%;
-    margin: 5rem auto 0 auto;
+    margin: 1rem auto 1rem auto;
     display: flex;
     flex-direction: column;
 }

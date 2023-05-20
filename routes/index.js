@@ -254,7 +254,39 @@ router.get('/episodes/:id', async (req, res) => {
 });
 
 router.get('/search', async (req, res) => {
-    res.json({w: req.query})
-})
+    // const { query } = req;
+
+    // if (!query) {
+    //     res.status(200).render('search');
+    // }
+
+    // const motifsQuery = `
+    // {
+    //     motifs (orderBy: {name: asc}) {
+    //         id
+    //         name
+    //         represents
+    //         mainAppearance: appearances(where: {main: {equals: true}}) {
+    //             name
+    //             appears
+    //             url
+    //         }
+    //         tags {
+    //             name
+    //         }
+    //     }
+    // }
+    // `;
+    // const resp = await fetch(apiUrl, {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify({ query })
+    // });
+    
+    res.render('search');
+
+});
 
 module.exports = router;
