@@ -1,7 +1,6 @@
 const express = require('express');
 const apiUrl = require('../apiUrl');
 const router = express.Router();
-const fetch = require('node-fetch');
 const episodes = require('./episodes.json');
 
 function getEpisode(id) {

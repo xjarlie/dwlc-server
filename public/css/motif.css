@@ -127,11 +127,14 @@ body {
 }
 
 .item .appname {
-    flex-grow: 1;
+    
 }
 
 .item .episode {
-    margin: 0 20px;
+    margin: 0 20px 0 5px;
+    /* white-space: nowrap; */
+    flex-grow: 1;
+    text-align: right;
 }
 
 .embed iframe {
