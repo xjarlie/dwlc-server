@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("partials/head", {title: 'Series ' + data.context.number})  %>
+    <link rel="stylesheet" href="/public/css/series.css" />
+</head>
+<body>
+    <%- include("partials/navbar")  %>
+
+    <div class="container">
+        <div class="left">
+            <div class="series title">Series <%= data.context.number %></div>
+            <div class="pane">
+                <span class="paneTitle">Info</span>
+                <div class="content">
+                    <img src="<%= '/public/img/seasons/season-' + data.context.number + '.jpg' %>" alt="Doctor Who Series <%= data.context.number %> Poster" />
+                    <div class="text">
+                        <b>Doctor:</b>
+                        <br />
+                        <%= data.context.doctor.number %>th (<%= data.context.doctor.actor %>)
+                        <br /><br />
+                        <b>Companion:</b>
+                        <br />
+                        <%= data.context.companion %>
+                        <br /><br />
+                        <b>Composer:</b><br />
+                        <%= data.context.composer %>
+                    </div>
+                </div>
+            </div>
+            <div class="series pane">
+                <span class="paneTitle">All Series</span>
+                <div class="series links simple-scrollbar">
+                    <% for (let i = 0; i < 15; i++) { %>
+                        <a href="/series/<%= i %>">Series <%= i %> <% if (i === 0) { %> (Specials) <% } %></a>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="motifs">
+                <div class="header">
+                    <span class="title">Motifs (<%= data.motifs.length %>)</span>
+                    <!-- <span class="dropdown" id="motifDrop">Collapse</span> -->
+                </div>
+                <%- include("partials/motifTable", {motifs: data.motifs}) %>
+            </div>
+            <div class="tracks">
+                <div class="header">
+                    <span class="title">Tracks (<%= data.tracks.length %>)</span>
+                    <!-- <span class="dropdown" id="trackDrop">Collapse</span> -->
+                </div>
+                <%- include("partials/trackTable", {tracks: data.tracks}) %>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

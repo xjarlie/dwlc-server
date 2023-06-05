@@ -26,18 +26,6 @@ body {
     }
 }
 
-@media screen and (max-width: 500px) {
-    td.tags, th.tags {
-        display: none;
-    }
-}
-
-@media screen and (max-width: 350px) {
-    td.appears, th.appears {
-        display: none;
-    }
-}
-
 .header {
     display: flex;
     flex-direction: column;
@@ -71,44 +59,4 @@ body {
     width: 50px;
     stroke-width: 5px;
     stroke: white;
-}
-
-.table-wrap {
-    background-color: rgba(255, 255, 255, 12%);
-    border-radius: 16px;
-    width: 100%;
-    overflow: auto;
-    height: fit-content;
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
-}
-
-
-.table-sort {
-    border-spacing: 0;
-    width: 100%;
-}
-
-thead th {
-    padding: 0.5rem;
-}
-
-tbody td a {
-    display:block;
-    text-decoration: none;
-    color: white;
-    padding: 1rem;
-}
-
-tbody tr {
-    transition: all 0.1s ease;
-}
-
-tbody tr:nth-child(odd) {
-    background-color: rgba(255, 255, 255, 12%);
-}
-
-tbody tr:hover {
-    background-color: rgba(255, 255, 255, 20%);
-    cursor: pointer;
 }

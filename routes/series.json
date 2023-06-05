@@ -1,0 +1,77 @@
+{
+    "0": {
+        "doctor": 0,
+        "companion": "",
+        "composer": "Murray Gold and Segun Akinola"
+    },
+    "1": {
+        "doctor": 9,
+        "companion": "Rose Tyler (Billie Piper)",
+        "composer": "Murray Gold"
+    },
+    "2": {
+        "doctor": 10,
+        "companion": "Rose Tyler (Billie Piper)",
+        "composer": "Murray Gold"
+    },
+    "3": {
+        "doctor": 10,
+        "companion": "Martha Jones (Freema Agyeman)",
+        "composer": "Murray Gold"
+    },
+    "4": {
+        "doctor": 10,
+        "companion": "Donna Noble (Catherine Tate)",
+        "composer": "Murray Gold"
+    },
+    "5": {
+        "doctor": 11,
+        "companion": "Amy Pond (Karen Gillan)",
+        "composer": "Murray Gold"
+    },
+    "6": {
+        "doctor": 11,
+        "companion": "Amy Pond (Karen Gillan) and Rory Williams (Arthur Darvill)",
+        "composer": "Murray Gold"
+    },
+    "7": {
+        "doctor": 11,
+        "companion": "Amy Pond (Karen Gillan) / Clara Oswald (Jenna Coleman)",
+        "composer": "Murray Gold"
+    },
+    "8": {
+        "doctor": 12,
+        "companion": "Clara Oswald (Jenna Coleman)",
+        "composer": "Murray Gold"
+    },
+    "9": {
+        "doctor": 12,
+        "companion":"Clara Oswald (Jenna Coleman)",
+        "composer": "Murray Gold"
+    },
+    "10": {
+        "doctor": 12,
+        "companion": "Bill Potts (Pearl Mackie)",
+        "composer": "Murray Gold"
+    },
+    "11": {
+        "doctor": 13,
+        "companion": "Yasmin Khan (Mandip Gill), Ryan Sinclair (Tosin Cole) and Graham O'Brien (Bradley Walsh)",
+        "composer": "Segun Akinola"
+    },
+    "12": {
+        "doctor": 13,
+        "companion":"Yasmin Khan (Mandip Gill), Ryan Sinclair (Tosin Cole) and Graham O'Brien (Bradley Walsh)",
+        "composer":"Segun Akinola"
+    },
+    "13": {
+        "doctor": 13,
+        "companion": "Yasmin Khan (Mandip Gill) and Dan Lewis (John Bishop)",
+        "composer":"Segun Akinola"
+    },
+    "14": {
+        "doctor": 15,
+        "companion": "Ruby Sunday (Millie Gibson)",
+        "composer": "Murray Gold"
+    }
+}

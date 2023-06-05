@@ -1,0 +1,114 @@
+body {
+    background-color: var(--tardis-blue);
+    color: white;
+    height: 100svh;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+.title {
+    font-weight: 500;
+    font-size: 30px;
+    padding: 0.1rem 0 0.9rem 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    padding: 0.5rem;
+}
+
+.left {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 1rem;
+}
+
+.left .series.title {
+    font-size: 36px;
+    margin: 0 0 0 0.5rem;
+    padding: 0;
+}
+
+.left .pane .content {
+    display: flex;
+    flex-direction: row;
+}
+
+.left .pane .content img {
+    width: 150px;
+    max-width: 50%;
+    height: auto;
+    border-bottom-left-radius: 10px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.left .pane .content .text {
+    padding: 10px;
+}
+
+.left .series.pane {
+    display: flex;
+    flex-direction: column;
+}
+
+.series.links {
+    max-height: 200px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+}
+
+.series.links a {
+    color: white;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+}
+
+.series.links a:hover {
+    color: rgba(255, 255, 255, 80%);
+}
+
+
+.main {
+    max-width: 70%;
+}
+
+.main .header {
+    display: flex;
+    flex-direction: row;
+}
+
+.main .motifs, .main .tracks {
+    margin: 0 auto;
+}
+
+
+@media screen and (max-width: 768px) {
+    .container {
+        flex-wrap: wrap;
+    }
+
+    .left {
+        width: 100%;
+        margin-right: 0;
+    }
+
+
+    
+    .main {
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .left .pane .content img {
+        display: none;
+    }
+}

@@ -1,0 +1,24 @@
+<div class="table-wrap simple-scrollbar">
+    <table class="table-sort">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th class="represents">Represents</th>
+                <th class="appears">Appeared</th>
+                <th class="tags">Tags</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (const i in motifs) { %>
+                    <tr>
+                        <td><a href="/motifs/<%= motifs[i].id %>"><%= motifs[i].name %></td></a>
+                        <td class="represents"><a href="/motifs/<%= motifs[i].id %>" tabindex="-1"><%= motifs[i].represents %></a></td>
+                        <td class="appears"><a href="/motifs/<%= motifs[i].id %>" tabindex="-1"><%= motifs[i]?.mainAppearance[0]?.appears %></a></td>
+                        <td class="tags"><a href="/motifs/<%= motifs[i].id %>" tabindex="-1"><% for (const j in motifs[i].tags) { %> <%= motifs[i].tags[j].name %>, <% } %></a></td>
+                    </tr>
+                </a>
+            <% } %>
+        </tbody>
+    </table>
+</div>
+<link rel="stylesheet" href="/public/css/motifTable.css" />

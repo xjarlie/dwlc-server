@@ -2,9 +2,22 @@ const express = require('express');
 const apiUrl = require('../apiUrl');
 const router = express.Router();
 const episodes = require('./episodes.json');
+const doctors = require('./doctors.json');
+const series = require('./series.json');
 
 function getEpisode(id) {
     return episodes[id.trim().toUpperCase()];
+}
+
+function getSeries(number) {
+    const info = {...series[number.trim()]};
+    if (!info || info.doctor === undefined) return null;
+    const dr = String(info.doctor);
+    info.doctor = {
+        number: dr,
+        actor: doctors[info.doctor]
+    };
+    return info;
 }
 
 router.get('/', async (req, res) => {
@@ -250,6 +263,59 @@ router.get('/episodes/:id', async (req, res) => {
 
     res.status(200).render('episode', {data});
     return;
+});
+
+router.get('/series/:number', async (req, res) => {
+    const { number } = req.params;
+    const seriesCtx = getSeries(number);
+    if (!seriesCtx) {
+        res.redirect('/404');
+        return;
+    }
+
+    const query = `
+    {
+        motifs (orderBy: {name: asc} where:{appearances: {some: {appears: {contains: "s${number.padStart(2, '0')}"}}}}) {
+            id
+            name
+            represents
+            mainAppearance: appearances(where: {main: {equals: true}}) {
+                name
+                appears
+                url
+            }
+            tags {
+                name
+            }
+        }
+
+        tracks (orderBy: {name: asc} where: {appears: {contains: "s${number.padStart(2, '0')}"}}) {
+            id
+            name
+            appears
+            motifs {
+                name
+            }
+            url
+            spotifyUrl
+        }   
+    }
+    `;
+    const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ query })
+    });
+    const data = (await response.json()).data;
+
+    data.context = seriesCtx;
+    data.context.number = number;
+    res.status(200).render('series', {data});
+    //res.json({data});
+    return;
+    
 });
 
 router.get('/search', async (req, res) => {
