@@ -6,8 +6,6 @@ body {
     background-color: var(--dark-tardis);
     color: white;
     height: 100%;
-    display: flex;
-    flex-direction: column;
 }
 
 .container {

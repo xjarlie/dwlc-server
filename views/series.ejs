@@ -7,9 +7,12 @@
 <body>
     <%- include("partials/navbar")  %>
 
-    <div class="container">
+    <div class="container simple-scrollbar">
         <div class="left">
-            <div class="series title">Series <%= data.context.number %></div>
+            <div class="series header">
+                <span class="title">Series <%= data.context.number %></span>
+                <span class="nav"><a href="/series">View all series</a></span>
+            </div>
             <div class="pane">
                 <span class="paneTitle">Info</span>
                 <div class="content">
@@ -19,7 +22,7 @@
                         <br />
                         <%= data.context.doctor.number %>th (<%= data.context.doctor.actor %>)
                         <br /><br />
-                        <b>Companion:</b>
+                        <b>Companion(s):</b>
                         <br />
                         <%= data.context.companion %>
                         <br /><br />
@@ -28,32 +31,58 @@
                     </div>
                 </div>
             </div>
-            <div class="series pane">
+            <!-- <div class="series pane">
                 <span class="paneTitle">All Series</span>
                 <div class="series links simple-scrollbar">
                     <% for (let i = 0; i < 15; i++) { %>
                         <a href="/series/<%= i %>">Series <%= i %> <% if (i === 0) { %> (Specials) <% } %></a>
                     <% } %>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="main">
             <div class="motifs">
                 <div class="header">
                     <span class="title">Motifs (<%= data.motifs.length %>)</span>
-                    <!-- TODO: ADD THESE COLLAPSE BUTTONS <span class="dropdown" id="motifDrop">Collapse</span> -->
+                    <span class="dropdown" id="motifDrop" data-open="true">Collapse</span>
                 </div>
                 <%- include("partials/motifTable", {motifs: data.motifs}) %>
             </div>
             <div class="tracks">
                 <div class="header">
                     <span class="title">Tracks (<%= data.tracks.length %>)</span>
-                    <!-- <span class="dropdown" id="trackDrop">Collapse</span> -->
+                    <span class="dropdown" id="trackDrop" role="button" data-open="true">Collapse</span>
                 </div>
                 <%- include("partials/trackTable", {tracks: data.tracks}) %>
             </div>
         </div>
     </div>
+
+    <script>
+
+        function onDropdownClick(e) {
+            const target = e.target;
+            const table = target.parentNode.nextElementSibling;
+            console.log(table);
+            
+
+            if (target.dataset.open === 'true') {
+                table.classList.add('closed');
+                target.dataset.open = 'false';
+                target.textContent = 'Expand';
+            } else {
+                table.classList.remove('closed');
+                target.dataset.open = 'true';
+                target.textContent = 'Collapse'
+            }
+
+        }
+
+        document.querySelectorAll('.dropdown').forEach((el) => {
+            el.addEventListener('click', onDropdownClick);
+        });
+
+    </script>
 
 </body>
 </html>

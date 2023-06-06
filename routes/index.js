@@ -265,6 +265,11 @@ router.get('/episodes/:id', async (req, res) => {
     return;
 });
 
+// TODO: all series page
+router.get('/series', async (req, res) => {
+    res.send('hello world');
+});
+
 router.get('/series/:number', async (req, res) => {
     const { number } = req.params;
     const seriesCtx = getSeries(number);
@@ -289,7 +294,7 @@ router.get('/series/:number', async (req, res) => {
             }
         }
 
-        tracks (orderBy: {name: asc} where: {appears: {contains: "s${number.padStart(2, '0')}"}}) {
+        tracks (orderBy: {appears: asc} where: {appears: {contains: "s${number.padStart(2, '0')}"}}) {
             id
             name
             appears

@@ -3,35 +3,60 @@ body {
     color: white;
     height: 100svh;
 
-    display: flex;
-    flex-direction: column;
 }
 
 
 .title {
     font-weight: 500;
     font-size: 30px;
-    padding: 0.1rem 0 0.9rem 0;
+    padding: 0.5rem 0 0.7rem 0;
 }
 
 .container {
     display: flex;
     flex-direction: row;
     padding: 0.5rem;
+    padding-top: 2rem;
     margin: 0 auto;
+    overflow-y: scroll;
 }
 
 .left {
-    width: 400px;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     margin-right: 1rem;
+
+    position: sticky;
+    top: 0;
+    left: 0;
 }
 
-.left .series.title {
-    font-size: 36px;
-    margin: 0 0 0 0.5rem;
+.left .series.header {
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 0 0.5rem;
+}
+
+.left .series.header .nav {
+    font-weight: 700;
+    color: rgba(255, 255, 255, 50%);
+    display: block;
+}
+
+.left .series.header .nav:hover {
+    text-decoration: underline;
+}
+
+.left .series.header .nav a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.left .series.header .title {
+    font-size: 38px;
     padding: 0;
+    font-weight: 500;
 }
 
 .left .pane .content {
@@ -77,7 +102,10 @@ body {
 
 
 .main {
-    width: 70%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
 }
 
 .main .header {
@@ -85,8 +113,28 @@ body {
     flex-direction: row;
 }
 
-.main .motifs, .main .tracks {
+.main .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main .header .dropdown {
+    color: rgba(255, 255, 255, 70%);
+    cursor: pointer;
+    text-decoration: underline;
+    font-weight: 500;
+    user-select: none;
+}
+
+.main .header .dropdown:hover {
+    color: rgba(255, 255, 255, 50%);
+}
+
+.main > .motifs, .main > .tracks {
     margin: 0 auto;
+    width: 100%;
 }
 
 
@@ -98,10 +146,10 @@ body {
     .left {
         width: 100%;
         margin-right: 0;
+
+        position: inherit;
     }
 
-
-    
     .main {
         width: 100%;
     }
@@ -111,4 +159,10 @@ body {
     .left .pane .content img {
         display: none;
     }
+}
+
+.closed {
+    height: 2px !important;
+    padding-bottom: 0 !important;
+    overflow: hidden !important;
 }

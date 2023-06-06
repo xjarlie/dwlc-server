@@ -11,35 +11,39 @@
 html, body {
     margin: 0;
     width: 100%;
+
+    display: flex;
+    flex-direction: column;
 }
 
-.simple-scrollbar {
-    scrollbar-color: rgba(255, 255, 255, 50%) rgba(0, 0, 0, 0%);
-    scrollbar-width: 10px;
+@media (hover: hover) {
+    .simple-scrollbar {
+        scrollbar-color: rgba(255, 255, 255, 50%) rgba(0, 0, 0, 0%);
+        scrollbar-width: 10px;
+    }
+    
+    .simple-scrollbar::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+        border-radius: 16px;
+        transition: all 0.1s ease;
+    }
+    
+    .simple-scrollbar::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 20%);
+        border-radius: 16px;
+        transition: all 0.1s ease;
+    }
+    
+    .simple-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 50%);
+    }
+    
+    .simple-scrollbar::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0%);
+        border-radius: 16px;
+    }
 }
-
-.simple-scrollbar::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-    border-radius: 16px;
-    transition: all 0.1s ease;
-}
-
-.simple-scrollbar::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 20%);
-    border-radius: 16px;
-    transition: all 0.1s ease;
-}
-
-.simple-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 50%);
-}
-
-.simple-scrollbar::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0%);
-    border-radius: 16px;
-}
-
 
 .panel {
     background-color: rgba(255, 255, 255, 12%);
