@@ -6,16 +6,73 @@
     <link rel="stylesheet" href="/public/css/index.css" />
 </head>
 
-<body>
+<body class="simple-scrollbar">
 
     <%- include("partials/navbar.ejs") %>
     
-    <div class="container">
-        <div class="header">
+    <div class="container simple-scrollbar">
+        <!-- <div class="header">
             <span class="title">The Doctor Who Leitmotif Catalogue</span>
             <span class="credit">by <a target="_blank" href="https://www.github.com/xjarlie">Xjarlie</a></span>
+        </div> -->
+        <br />
+        <div class="carousel-title">
+            <span class="title">Recently added motifs</span>
+            <a class="viewall" href="/motifs">View all</a>
         </div>
-        <div class="content">
+        <div class="motifs carousel simple-scrollbar">
+            <% for (const motif of data.motifs) { %>
+                <a class="motif pane never-underline" href="/motifs/<%= motif.id %>">
+                    <span class="paneTitle">Motif</span>
+                    <div class="embed">
+                        <% const youtubeID = motif.main[0].url.split("https://youtu.be/")[1]; %>
+                        <img src="https://img.youtube.com/vi/<%= youtubeID %>/maxresdefault.jpg" />
+                    </div>
+                    <div class="info">
+                        <span class="name"><%= motif.name %></span>
+                        <span class="view">View motif</span>
+                    </div>
+                </a>
+            <% } %>
+            <a class="viewmore" href="/motifs">
+                <span class="text">View more</span>
+                <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14.2014 8.50824L8.72036 8.50907M8.71248 8.50907L2.76248 8.50907" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8.71246 2.55L13.8736 7.71114C14.3093 8.1468 14.3093 8.8532 13.8736 9.28886L8.71246 14.45" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+        </div>
+
+        <br /><br />
+
+        <div class="carousel-title">    
+            <span class="title">Recently added tracks</span>
+            <a class="viewall" href="/tracks">View all</a>
+        </div>
+        <div class="tracks carousel simple-scrollbar">
+            <% for (const track of data.tracks) { %>
+                <a class="track pane never-underline" href="/tracks/<%= track.id %>">
+                    <span class="paneTitle">Track</span>
+                    <div class="embed">
+                        <% const youtubeID = track.url.split("https://youtu.be/")[1]; %>
+                        <img src="https://img.youtube.com/vi/<%= youtubeID %>/maxresdefault.jpg" />
+                    </div>
+                    <div class="info">
+                        <span class="name"><%= track.name %></span>
+                        <span class="view">View track</span>
+                    </div>
+                </a>
+            <% } %>
+            <a class="viewmore" href="/tracks">
+                <span class="text">View more</span>
+                <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14.2014 8.50824L8.72036 8.50907M8.71248 8.50907L2.76248 8.50907" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8.71246 2.55L13.8736 7.71114C14.3093 8.1468 14.3093 8.8532 13.8736 9.28886L8.71246 14.45" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+        </div>
+        <br /><br /><br />
+        <!-- <div class="content">
             <div class="about pane">
                 <span class="paneTitle">About</span>
                 <span class="text">
@@ -54,7 +111,7 @@
                         <% } %>
                     <% } %>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </body>

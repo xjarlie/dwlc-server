@@ -13,7 +13,7 @@
         <div class="header">
             <span class="nav"><a href="/">< Home</a></span>
             <span class="title">
-                Tag: <span class="tag"><%= tag.name %></span> (<%= tag.motifs.length %>)
+                Tag: <span class="tag"><%= tag.name %></span> (<%= tag.motifs.length %> motif<%= tag.motifs.length === 1 ? "" : "s" %>)
             </span>
         </div>
         <%- include("partials/motifTable", {motifs: tag.motifs}) %>

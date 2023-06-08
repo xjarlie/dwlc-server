@@ -36,13 +36,21 @@ html, body {
     }
     
     .simple-scrollbar::-webkit-scrollbar-thumb:hover {
-        background: rgba(255, 255, 255, 50%);
+        background: rgba(255, 255, 255, 40%);
     }
     
     .simple-scrollbar::-webkit-scrollbar-track {
         background: rgba(255, 255, 255, 0%);
         border-radius: 16px;
     }
+
+    .simple-scrollbar:not(:hover) {
+        scrollbar-color: rgba(0,0,0,0%);
+    }
+    .simple-scrollbar:not(:hover)::-webkit-scrollbar-thumb {
+        background:rgba(0, 0, 0, 0%);
+    }
+
 }
 
 .panel {

@@ -54,6 +54,7 @@ body {
     flex-direction: row;
     justify-content: flex-start;
     align-items: baseline;
+    flex-wrap: wrap;
 }
 
 .title .tag {

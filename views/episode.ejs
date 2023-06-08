@@ -10,7 +10,7 @@
 
     <div class="container">
         <div class="header">
-            <span class="nav"><a href="/">< Home</a></span>
+            <span class="nav"><a href="/series/<%= String(Number(data.episodeID.split('E')[0].split('S')[1])) %>">View full series</a></span>
             <span class="title">
                 Episode: <span class="tag"><%= data.episodeID %> - <i><%= data.episodeTitle %></i></span> (<%= data.tracks.length %> track<%= data.tracks.length === 1 ? "" : "s" %>)
             </span>

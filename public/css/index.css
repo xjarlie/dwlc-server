@@ -1,6 +1,7 @@
 body {
     background-color: var(--tardis-blue);
     color: white;
+    overflow-y: auto;
 }
 
 a {
@@ -12,7 +13,7 @@ a.always-underline {
     text-decoration: underline;
 }
 
-a:hover {
+a:hover:not(.never-underline) {
     text-decoration: underline;
     cursor: pointer;
 }
@@ -35,13 +36,125 @@ a:hover {
 }
 
 .container {
-    width: 80%;
-    margin: 1rem auto 1rem auto;
+    width: 100%;
+    /* margin: 1rem auto 1rem auto; */
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+
+}
+
+.carousel-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    margin-left: 4rem;
+}
+
+.carousel-title .title {
+    font-size: 32px;
+    font-weight: 400;
+}
+
+.carousel-title .viewall {
+    font-weight: 600;
+    color: rgba(255, 255, 255, 80%);
+    margin-left: 1.3rem;
+}
+
+.carousel {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+    background-color: rgba(255, 255, 255, 5%);
+
+    overflow-x: auto;
+    padding: 1rem;
+    padding-left: 3.5rem;
+}
+
+.carousel .pane {
+    width: 300px;
+    min-width: 300px;
+    
+
     display: flex;
     flex-direction: column;
 }
 
-.content {
+.carousel .pane .paneTitle {
+    cursor: pointer;
+}
+
+.carousel .pane .embed {
+    overflow: hidden;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+}
+
+.carousel .pane .embed img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+
+    transition: all 0.2s ease;
+    
+}
+.carousel .pane:hover .embed img {
+    transform: scale(1.03);
+}
+.carousel .pane:hover .info .view {
+    text-decoration: underline;
+}
+
+
+.carousel .pane .info {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 0.7rem;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.carousel .pane .info .name {
+    font-size: 18px;
+    font-weight: 400;
+
+}
+
+.carousel .pane .info .view {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 80%);
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+}
+
+.carousel .viewmore {
+    width: 200px;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    color: rgba(255, 255, 255, 80%);
+}
+
+.carousel .viewmore .text {
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 1rem;
+}
+
+.carousel .viewmore svg {
+    width: 20px;
+    height: auto;
+    aspect-ratio: 1/1;
+}
+
+/* .content {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -111,14 +224,8 @@ a:hover {
 
 .recent .motif:last-child {
     border-radius: 0 0 10px 10px;
-}
-
-@media screen and (max-width: 768px) {
-    .container {
-        width: 90%;
-    }
-}
-
+} */
+/* 
 @media screen and (max-width: 600px) {
     .content {
         flex-wrap: wrap-reverse;
@@ -126,11 +233,4 @@ a:hover {
     .about, .right {
         width: 100%;
     }
-}
-
-@media screen and (max-width: 320px) {
-    .container {
-        
-        width: 100%;
-    }
-}
+} */

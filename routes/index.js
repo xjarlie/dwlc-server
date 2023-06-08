@@ -24,9 +24,18 @@ router.get('/', async (req, res) => {
 
     const query = `
         {
-            motifs(orderBy: {id: desc}) {
+            motifs (orderBy: {id: desc} take: 15) {
                 id
                 name
+                main: appearances(where: {main: {equals: true}}) {
+                    url
+                }
+            }
+
+            tracks (orderBy: {id: desc} take: 15) {
+                id
+                name
+                url
             }
         }
     `;
@@ -41,6 +50,7 @@ router.get('/', async (req, res) => {
 
     const status = response.status;
     const data = (await response.json()).data;
+    console.log(data);
 
 
     res.status(200).render('index', { data });
