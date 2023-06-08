@@ -95,8 +95,10 @@ a:hover:not(.never-underline) {
 }
 
 .carousel .pane .embed img {
+    height: 100%;
     width: 100%;
-    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    
 
     transition: all 0.2s ease;
     
@@ -113,7 +115,7 @@ a:hover:not(.never-underline) {
     display: flex;
     flex-direction: column;
     padding: 0.5rem 0.7rem;
-    justify-content: center;
+    justify-content: space-between;
     flex-grow: 1;
 }
 
