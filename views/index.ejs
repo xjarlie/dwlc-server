@@ -11,13 +11,19 @@
     <%- include("partials/navbar.ejs") %>
     
     <div class="container simple-scrollbar">
-        <!-- <div class="header">
+        <div class="header">
             <span class="title">The Doctor Who Leitmotif Catalogue</span>
             <span class="credit">by <a target="_blank" href="https://www.github.com/xjarlie">Xjarlie</a></span>
-        </div> -->
+            <form class="searchWrap" action="/search" method="get">
+                <input type="text" autocomplete="off" name="q" required placeholder="Search..." />
+                <button type="submit">
+                    <img src="/public/img/search.svg" alt="search icon" />
+                </button>
+            </form>
+        </div>
         <br />
         <div class="carousel-title">
-            <span class="title">Recently added motifs</span>
+            <span class="title">Recent motifs</span>
             <a class="viewall" href="/motifs">View all</a>
         </div>
         <div class="motifs carousel simple-scrollbar">
@@ -46,7 +52,7 @@
         <br /><br />
 
         <div class="carousel-title">    
-            <span class="title">Recently added tracks</span>
+            <span class="title">Recent tracks</span>
             <a class="viewall" href="/tracks">View all</a>
         </div>
         <div class="tracks carousel simple-scrollbar">
@@ -71,8 +77,26 @@
                 </svg>
             </a>
         </div>
+        <br /><br />
+
+        <div class="carousel-title">
+            <span class="title">View by series</span>
+            <a href="/series" class="viewall"></a>
+        </div>
+        <div class="series carousel simple-scrollbar">
+            <% for (let i = 0; i<15; i++) { %>
+                <a href="/series/<%= i %>" class="series pane never-underline">
+                    <span class="paneTitle"><%= i===0 ? "Specials" : "Series "+i %></span>
+                    <div class="embed">
+                        <img src="/public/img/seasons/season-<%= i %>.jpg" alt="Series <%= i %> Poster" />
+                    </div>
+                </a>
+            <% } %>
+        </div>
+
         <br /><br /><br />
-        <!-- <div class="content">
+        
+        <div class="content">
             <div class="about pane">
                 <span class="paneTitle">About</span>
                 <span class="text">
@@ -90,7 +114,7 @@
                     Or, post an issue on <a class="always-underline" target="_blank" href="https://www.github.com/xjarlie/dwlc-server/issues">Github</a>.
                 </span>
             </div>
-            <div class="right">
+            <!-- <div class="right">
                 <div class="links">
                     <a href="/motifs" class="motifs">View all motifs</a>
                     <a href="/tracks" class="tracks">View all tracks</a>
@@ -113,6 +137,7 @@
                 </div>
             </div> -->
         </div>
+
     </div>
 </body>
 

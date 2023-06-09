@@ -21,18 +21,100 @@ a:hover:not(.never-underline) {
 .header {
     display: flex;
     flex-direction: column;
-    margin: 1rem 0.5rem;
+    margin: 1rem auto;
+    align-items: center;
+    padding: 0 1rem;
 }
 
 .header .title {
     font-size: 32pt;
     font-weight: 300;
+    text-align: center;
 }
 
 .header .credit {
     color: rgba(255, 255, 255, 60%);
     font-weight: 500;
     font-size: 16pt;
+}
+
+.header .searchWrap {
+    display: flex;
+    flex-direction: row;
+    
+    background-color: transparent;
+
+    border-radius: 10px;
+
+    transition: all 0.1s ease;
+    
+    width: 100%;
+    min-width: 200px;
+
+    margin-top: 1rem;
+}
+
+.header .searchWrap input {
+    background-color: rgba(255, 255, 255, 10%);
+    border: none;
+    border-radius: 10px;
+
+    color: white;
+    font-weight: 500;
+    font-size: 14px;
+    font-style: italic;
+
+    width: 100%;
+
+    padding: 0 48px 0 12px;
+
+    transition: all 0.1s ease;
+
+    position: relative;
+}
+
+.header .searchWrap input:hover {
+    background-color: rgba(255, 255, 255, 12%);
+}
+
+.header .searchWrap input:focus {
+    border: none;
+    outline: none;
+
+    background-color: rgba(255, 255, 255, 15%);
+}
+
+.header .searchWrap input::placeholder {
+    color: rgba(255, 255, 255, 70%);
+}
+
+.header .searchWrap button {
+    position: relative;
+    height: 100%;
+    width: 38px;
+    aspect-ratio: 1 / 1;
+    margin-left: -38px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(255, 255, 255, 5%);
+    border: none;
+
+    border-radius: 10px;
+
+    transition: all 0.1s ease;
+}
+
+.header .searchWrap button:hover {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 10%);
+}
+
+.header .searchWrap button img {
+    margin: auto;
 }
 
 .container {
@@ -50,17 +132,19 @@ a:hover:not(.never-underline) {
     align-items: center;
     margin-bottom: 0.5rem;
     margin-left: 4rem;
+    flex-wrap: wrap;
 }
 
 .carousel-title .title {
     font-size: 32px;
     font-weight: 400;
+
+    margin-right: 1rem;
 }
 
 .carousel-title .viewall {
     font-weight: 600;
     color: rgba(255, 255, 255, 80%);
-    margin-left: 1.3rem;
 }
 
 .carousel {
@@ -156,10 +240,53 @@ a:hover:not(.never-underline) {
     aspect-ratio: 1/1;
 }
 
-/* .content {
-    width: 100%;
+.series.pane {
+    width: 200px;
+    min-width: 200px;
+}
+
+.series.pane .embed {
+    aspect-ratio: 2 / 3;
+    border-radius: 0 0 10px 10px;
+}
+
+@media screen and (max-width: 768px) {
+    .carousel {
+        padding: 0.5rem;
+        padding-left: 1rem;
+    }
+    .carousel-title {
+        margin-left: 1rem;
+    }
+    .carousel-title .viewall {
+        margin-left: 0;
+    }
+
+    .carousel .pane {
+        min-width: 200px;
+        width: 200px;
+
+        margin: 0.2rem;
+    }
+
+    .carousel .pane .paneTitle {
+        padding: 0.3rem;
+        padding-left: 0.5rem;
+    }
+    .carousel .pane .embed {
+        /* border-radius: 10px 10px 0 0; */
+    }
+
+    .carousel .pane .info .name {
+        font-size: 17px;
+    }
+
+}
+
+.content {
     display: flex;
     flex-direction: row;
+    margin: 0 auto;
 }
 
 
@@ -200,7 +327,7 @@ a:hover:not(.never-underline) {
     text-decoration: none;
     background-color: rgba(255, 255, 255, 30%);
 }
-
+/* 
 .recent {
     flex-grow: 1;
 }
@@ -227,7 +354,7 @@ a:hover:not(.never-underline) {
 .recent .motif:last-child {
     border-radius: 0 0 10px 10px;
 } */
-/* 
+
 @media screen and (max-width: 600px) {
     .content {
         flex-wrap: wrap-reverse;
@@ -235,4 +362,4 @@ a:hover:not(.never-underline) {
     .about, .right {
         width: 100%;
     }
-} */
+}
