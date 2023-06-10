@@ -35,7 +35,7 @@ html, body {
         transition: all 0.1s ease;
     }
     
-    .simple-scrollbar::-webkit-scrollbar-thumb:hover {
+    .simple-scrollbar::-webkit-scrollbar-thumb:focus {
         background: rgba(255, 255, 255, 40%);
     }
     

@@ -79,7 +79,7 @@
         </div>
         <br /><br />
 
-        <div class="carousel-title">
+        <div class="carousel-title" id="all-series">
             <span class="title">View by series</span>
             <a href="/series" class="viewall"></a>
         </div>
@@ -88,7 +88,7 @@
                 <a href="/series/<%= i %>" class="series pane never-underline">
                     <span class="paneTitle"><%= i===0 ? "Specials" : "Series "+i %></span>
                     <div class="embed">
-                        <img src="/public/img/seasons/season-<%= i %>.jpg" alt="Series <%= i %> Poster" />
+                        <img src="/public/img/seasons/season-<%= i %>.webp" alt="Series <%= i %> Poster" />
                     </div>
                 </a>
             <% } %>
