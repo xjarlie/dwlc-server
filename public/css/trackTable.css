@@ -40,6 +40,11 @@ tbody td.yt a, tbody td.spotify a {
     padding: 0.7rem;
 }
 
+tbody td.yt, tbody td.spotify {
+    width: 0.1%;
+    white-space: nowrap;
+}
+
 tbody tr {
     transition: all 0.1s ease;
 }

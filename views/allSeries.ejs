@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("partials/head", {title: 'Home', description: "The (very unofficial) collection of motifs and themes from Doctor Who (2005)"}) %>
+    <link rel="stylesheet" href="/public/css/index.css" />
+    <link rel="stylesheet" href="/public/css/allSeries.css" />
+</head>
+
+<body class="simple-scrollbar">
+
+    <%- include("partials/navbar.ejs") %>
+
+
+    <div class="container simple-scrollbar">
+
+        <div class="specials links">
+            <a href="/series/0">View Specials</a>
+        </div>
+
+        <div class="carousel-title">
+            <span class="title">RTD (1) Era</span>
+        </div>
+        <div class="series carousel simple-scrollbar">
+            <% for (let i = 1; i<5; i++) { %>
+                <a href="/series/<%= i %>" class="series pane never-underline">
+                    <span class="paneTitle"><%= i===0 ? "Specials" : "Series "+i %></span>
+                    <div class="embed">
+                        <img src="/public/img/seasons/season-<%= i %>.webp" alt="Series <%= i %> Poster" />
+                    </div>
+                </a>
+            <% } %>
+        </div>
+
+        <div class="carousel-title">
+            <span class="title">Moffat Era</span>
+        </div>
+        <div class="series carousel simple-scrollbar">
+            <% for (let i = 5; i<11; i++) { %>
+                <a href="/series/<%= i %>" class="series pane never-underline">
+                    <span class="paneTitle"><%= i===0 ? "Specials" : "Series "+i %></span>
+                    <div class="embed">
+                        <img src="/public/img/seasons/season-<%= i %>.webp" alt="Series <%= i %> Poster" />
+                    </div>
+                </a>
+            <% } %>
+        </div>
+
+        <div class="carousel-title">
+            <span class="title">Chibnall Era</span>
+        </div>
+        <div class="series carousel simple-scrollbar">
+            <% for (let i = 11; i<14; i++) { %>
+                <a href="/series/<%= i %>" class="series pane never-underline">
+                    <span class="paneTitle"><%= i===0 ? "Specials" : "Series "+i %></span>
+                    <div class="embed">
+                        <img src="/public/img/seasons/season-<%= i %>.webp" alt="Series <%= i %> Poster" />
+                    </div>
+                </a>
+            <% } %>
+        </div>
+
+        <div class="carousel-title">
+            <span class="title">RTD (2) Era</span>
+        </div>
+        <div class="series carousel simple-scrollbar">
+            <% for (let i = 14; i<15; i++) { %>
+                <a href="/series/<%= i %>" class="series pane never-underline">
+                    <span class="paneTitle"><%= i===0 ? "Specials" : "Series "+i %></span>
+                    <div class="embed">
+                        <img src="/public/img/seasons/season-<%= i %>.webp" alt="Series <%= i %> Poster" />
+                    </div>
+                </a>
+            <% } %>
+        </div>
+
+    </div>
+
+</body>

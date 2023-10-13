@@ -1,12 +1,73 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <%- include("partials/head", {title: 'Search' }) %>
+        <%- include("partials/head", {title: 'Search: "' + data.query + '" - Doctor Who Leitmotif Catalogue', description: `Motifs and tracks containing '${data.query}'`}) %>
+        <link rel="stylesheet" href="/public/css/search.css" />
     </head>
 
     <body>
-        <script async src="https://cse.google.com/cse.js?cx=0752cd90b0fb04657">
+        <!-- <script async src="https://cse.google.com/cse.js?cx=0752cd90b0fb04657">
         </script>
-        <div class="gcse-search"></div>
+        <div class="gcse-search"></div> -->
+        <%- include("partials/navbar.ejs") %>
+        
+        <div class="container simple-scrollbar">
+            <div class="header">
+                <form class="searchWrap" action="/search" method="get">
+                    <input type="text" autocomplete="off" name="q" required placeholder="Search..." value="<%= data.query %>"/>
+                    <button type="submit">
+                        <img src="/public/img/search.svg" alt="search icon" />
+                    </button>
+                </form>
+                <div class="tags">
+                    Tags:
+                    <% for (const tag of data.tags) { %>
+                        <a class="tag" href="/tags/<%= tag.name %>"><%= tag.name %></a>
+                    <% } %>
+                </div>
+            </div>
+            <div class="main">
+                <div class="motifs">
+                    <div class="header">
+                        <span class="title">Motifs (<%= data.motifs.length %>)</span>
+                        <span class="dropdown" id="motifDrop" data-open="true">Collapse</span>
+                    </div>
+                    <%- include("partials/motifTable", {motifs: data.motifs}) %>
+                </div>
+                <div class="tracks">
+                    <div class="header">
+                        <span class="title">Tracks (<%= data.tracks.length %>)</span>
+                        <span class="dropdown" id="trackDrop" role="button" data-open="true">Collapse</span>
+                    </div>
+                    <%- include("partials/trackTable", {tracks: data.tracks}) %>
+                </div>
+            </div>
+        </div>
+
+        <script>
+
+            function onDropdownClick(e) {
+                const target = e.target;
+                const table = target.parentNode.nextElementSibling;
+                console.log(table);
+
+                if (target.dataset.open === 'true') {
+                    table.classList.add('closed');
+                    target.dataset.open = 'false';
+                    target.textContent = 'Expand';
+                } else {
+                    table.classList.remove('closed');
+                    target.dataset.open = 'true';
+                    target.textContent = 'Collapse'
+                }
+    
+            }
+    
+            document.querySelectorAll('.dropdown').forEach((el) => {
+                el.addEventListener('click', onDropdownClick);
+            });
+    
+        </script>
+
     </body>
 </html>

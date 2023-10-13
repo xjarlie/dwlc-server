@@ -276,8 +276,10 @@ router.get('/episodes/:id', async (req, res) => {
 });
 
 // TODO: all series page
-router.get('/series', async (req, res) => {
-    res.send('hello world');
+router.get('/all-series', async (req, res) => {
+
+    res.status(200).render('allSeries');
+
 });
 
 router.get('/series/:number', async (req, res) => {
@@ -334,39 +336,64 @@ router.get('/series/:number', async (req, res) => {
 });
 
 router.get('/search', async (req, res) => {
-    // const { query } = req;
+    const { query } = req;
 
-    // if (!query) {
-    //     res.status(200).render('search');
-    // }
+    if (!query) {
+        res.redirect('/');
+    }
 
-    // const motifsQuery = `
-    // {
-    //     motifs (orderBy: {name: asc}) {
-    //         id
-    //         name
-    //         represents
-    //         mainAppearance: appearances(where: {main: {equals: true}}) {
-    //             name
-    //             appears
-    //             url
-    //         }
-    //         tags {
-    //             name
-    //         }
-    //     }
-    // }
-    // `;
-    // const resp = await fetch(apiUrl, {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify({ query })
-    // });
+
+    const dbQuery = `
+    {
+        motifs (orderBy: {name: asc}, where: { OR: [
+            { name: {contains: "${query.q}" }},
+            { represents: {contains: "${query.q}"} }            
+        ]}) {
+            id
+            name
+            represents
+            mainAppearance: appearances(where: {main: {equals: true}}) {
+                name
+                appears
+                url
+            }
+            tags {
+                name
+            }
+        }
+
+        tracks (orderBy: {appears: asc}, where: {name: {contains: "${query.q}"}}) {
+            id
+            name
+            appears
+            motifs {
+                name
+            }
+            url
+            spotifyUrl
+        }
+
+        tags (where: {name: {contains: "${query.q}"}}) {
+            name
+        }
+    }
+    `;
+    const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ query: dbQuery })
+    });
+
+    const data = (await response.json()).data;
+    data.query = query.q;
+
+
     
-    res.render('search');
+    res.render('search', {data});
 
+    //res.json(data);
 });
 
 module.exports = router;

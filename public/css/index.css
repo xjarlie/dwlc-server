@@ -157,6 +157,8 @@ a:hover:not(.never-underline) {
     overflow-x: auto;
     padding: 1rem;
     padding-left: 3.5rem;
+
+    margin-bottom: 3rem;
 }
 
 .carousel .pane {
