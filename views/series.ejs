@@ -16,7 +16,7 @@
             <div class="pane">
                 <span class="paneTitle">Info</span>
                 <div class="content">
-                    <img src="<%= '/public/img/seasons/season-' + data.context.number + '.jpg' %>" alt="Doctor Who Series <%= data.context.number %> Poster" />
+                    <img src="<%= '/public/img/seasons/season-' + data.context.number + '.webp' %>" alt="Doctor Who Series <%= data.context.number %> Poster" />
                     <div class="text">
                         <b>Doctor:</b>
                         <br />
@@ -39,6 +39,14 @@
                     <% } %>
                 </div>
             </div> -->
+            <div class="episodes pane">
+                <span class="paneTitle">Episodes</span>
+                <div class="episodes links simple-scrollbar">
+                    <% for (const i in data.context.episodes) { %>
+                        <a href="/episodes/S<%= String(data.context.number).padStart(2, '0') %>E<%= String(Number(i)+1).padStart(2, '0') %>">Episode <%= Number(i)+1 %> - <%= data.context.episodes[i] %></a>
+                    <% } %>
+                </div>
+            </div>
         </div>
         <div class="main">
             <div class="motifs">

@@ -17,6 +17,15 @@ function getSeries(number) {
         number: dr,
         actor: doctors[info.doctor]
     };
+
+    // Get episodes
+    const episodeKeys = Object.keys({...episodes}).filter(key => key.includes(`S${String(number).padStart(2, '0')}`));
+    info.episodes = [];
+
+    episodeKeys.forEach(key => {
+        info.episodes.push(episodes[key]);
+    })
+
     return info;
 }
 
@@ -275,7 +284,6 @@ router.get('/episodes/:id', async (req, res) => {
     return;
 });
 
-// TODO: all series page
 router.get('/all-series', async (req, res) => {
 
     res.status(200).render('allSeries');

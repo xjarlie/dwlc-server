@@ -77,12 +77,12 @@ body {
     padding: 10px;
 }
 
-.left .series.pane {
+.left .episodes.pane {
     display: flex;
     flex-direction: column;
 }
 
-.series.links {
+.episodes.links {
     max-height: 200px;
     overflow-y: auto;
     display: flex;
@@ -90,13 +90,13 @@ body {
     padding: 0.5rem;
 }
 
-.series.links a {
+.episodes.links a {
     color: white;
     font-weight: 500;
     margin-bottom: 0.3rem;
 }
 
-.series.links a:hover {
+.episodes.links a:hover {
     color: rgba(255, 255, 255, 80%);
 }
 
